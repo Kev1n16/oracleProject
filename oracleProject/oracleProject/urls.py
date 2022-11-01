@@ -18,8 +18,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('main/', include("main.urls")),
-    path('', include("main.urls")),  """added an empty path for now to make it easier"""
-    path('login/', include("login.urls")),
-    path('create/', include("createAccount.urls")),
+    path('', include("main.urls")),
 ]
