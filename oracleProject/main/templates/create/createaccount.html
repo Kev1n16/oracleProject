@@ -1,6 +1,7 @@
 <html>
 <head>
-    <link rel="stylesheet" href="createaccount.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'create/createaccount.css' %}">
 </head>
 <body>
 
@@ -25,7 +26,7 @@
     <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
     <div class="clearfix">
-        <button type="button" class="cancelbtn">Cancel</button>
+        <a href="{% url 'login page' %}"><button type="button" class="cancelbtn">Cancel</button></a>
         <button type="submit" class="signupbtn">Sign Up</button>
     </div>
 </div>

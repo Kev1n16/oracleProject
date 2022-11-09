@@ -1,17 +1,19 @@
 <html>
+
 <head>
     <title>Main Page testing!</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main/main.css' %}">
+
 </head>
+
 <body>
 
-<form action="{% url 'flavor' %}">
-    <input type="submit" value="Create Flavors" />
-</form>
+    <a href="{% url 'flavor' %}"><button type="button">Create Flavors</button></a>
 
-
-<form action="{% url 'login page' %}">
-    <input type="submit" value="Login" />
-</form>
+    <a href="{% url 'login page' %}"><button type="button">Login</button></a>
 
 </body>
+
 </html>

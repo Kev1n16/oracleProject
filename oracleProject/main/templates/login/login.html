@@ -1,7 +1,10 @@
 <html>
+
 <head>
-    <link rel="stylesheet" href="login.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'login/login.css' %}">
 </head>
+
 <body>
     <div class="container">
         <label for="uname"><b>Username</b></label>
@@ -9,20 +12,19 @@
 
         <label for="psw"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="psw" required>
-
-        <button type="submit">Login</button>
         <label>
-            <form action="{% url 'Create account page' %}">
-                <input type="submit" value="Create Account" />
-            </form>
             <input type="checkbox" checked="checked" name="remember"> Remember me
         </label>
+        <button type="submit">Login</button>
+
+        <a href="{% url 'Create account page' %}"><button type="button" class="createaccbtn">Create Account</button></a>
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
-        <button type="button" class="cancelbtn">Cancel</button>
+        <a href="{% url 'main page' %}"><button type="button" class="cancelbtn">Cancel</button></a>
         <span class="psw"> <a href="#">Forgot password?</a></span>
     </div>
-    
+
 </body>
+
 </html>
