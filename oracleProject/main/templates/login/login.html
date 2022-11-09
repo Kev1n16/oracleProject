@@ -12,6 +12,9 @@
 
         <button type="submit">Login</button>
         <label>
+            <form action="{% url 'Create account page' %}">
+                <input type="submit" value="Create Account" />
+            </form>
             <input type="checkbox" checked="checked" name="remember"> Remember me
         </label>
     </div>
@@ -20,5 +23,6 @@
         <button type="button" class="cancelbtn">Cancel</button>
         <span class="psw"> <a href="#">Forgot password?</a></span>
     </div>
+    
 </body>
 </html>

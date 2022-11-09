@@ -11,8 +11,6 @@ def login(request):
 
 def create(request):
     return render(request, "create/createaccount.html",)
-
-"""Still trying to link this to an actual html file
-def create(response):
-    return render(response, "templates/main/base.html", {})
-    ...doesnt work"""
+    
+def flavor(request):
+    return render(request, "flavor/createflavor.html",)
