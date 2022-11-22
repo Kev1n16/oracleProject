@@ -6,19 +6,24 @@
 </head>
 
 <body>
-    <div class="container">
-        <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="uname" required>
+    {% for message in messages %}
+        <p id="messages">{{message}}</p>
+    {% endfor %}
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div class="container">
+            <label for="user"><b>Username</b></label>
+            <input type="text" placeholder="Enter User Name" name="username" required>
 
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
-        <label>
-            <input type="checkbox" checked="checked" name="remember"> Remember me
-        </label>
-        <button type="submit">Login</button>
-
-        <a href="{% url 'Create account page' %}"><button type="button" class="createaccbtn">Create Account</button></a>
-    </div>
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" required>
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+            <button type="submit">Login</button>
+            <a href="{% url 'Create account page' %}"><button type="button" class="createaccbtn">Create Account</button></a>
+        </div>
+    </form>
 
     <div class="container" style="background-color:#f1f1f1">
         <a href="{% url 'main page' %}"><button type="button" class="cancelbtn">Cancel</button></a>
