@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from register import views as v
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),  """if we feel like making an admin page"""
     path('', include("main.urls")),
+    path('register/', v.register, name="register"), """remember currently path goes to main urls"""
 ]
