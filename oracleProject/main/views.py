@@ -4,6 +4,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import authenticate, logout
 from django.contrib import messages
+
+from main.forms import FlavorInputForm
+from main.models import Flavor
 # Create your views here.
 
 def main(request):
@@ -38,4 +41,14 @@ def create(request):
     return render(request, "create/register.html", context)
     
 def flavor(request):
-    return render(request, "flavor/createflavor.html",)
+    form = FlavorInputForm()
+
+    if request.method == 'POST':
+        form = FlavorInputForm(request.POST)
+        if form.is_valid():
+            form.save()
+            #TODO redirect to flavor display page
+    context = {
+        'form': form
+    }
+    return render(request, "flavor/createflavor.html", context)
