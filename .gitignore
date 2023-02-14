@@ -1,3 +1,4 @@
 oracleProject/main/__pycache__/*
 oracleProject/main/migrations/__pycache__/*
 oracleProject/oracleProject/__pycache__/*
+oracleProject/staticfiles/*

@@ -6,17 +6,20 @@
 </head>
 
 <body>
+    <div id="centerDiv">
+    <h1 id='pagetitle'>Login</h1>
     {% for message in messages %}
         <p id="messages">{{message}}</p>
     {% endfor %}
     <form method="POST" action="">
         {% csrf_token %}
         <div class="container">
-            <label for="user"><b>Username</b></label>
+            <label for="user"><b>Username</b></label><br>
             <input type="text" placeholder="Enter User Name" name="username" required>
-
-            <label for="psw"><b>Password</b></label>
+            <br>
+            <label for="psw"><b>Password</b></label><br>
             <input type="password" placeholder="Enter Password" name="password" required>
+            <br>
             <label>
                 <input type="checkbox" checked="checked" name="remember"> Remember me
             </label>
@@ -29,7 +32,7 @@
         <a href="{% url 'main page' %}"><button type="button" class="cancelbtn">Cancel</button></a>
         <span class="psw"> <a href="#">Forgot password?</a></span>
     </div>
-
+</div>
 </body>
 
 </html>
