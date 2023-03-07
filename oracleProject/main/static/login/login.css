@@ -1,11 +1,32 @@
+body  {
+  height: auto;
+  background-attachment:fixed;
+  background-image: linear-gradient(to bottom right, #fed39e, #f39011, #8a341d);
+}
+#centerDiv {
+  width: 400px;
+  height: 60%;
+  margin-top: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 50px;
+  background: #dee0df;
+  box-shadow: 0px 0px 15px;
+}
+#pagetitle {
+  text-align: center
+}
+
 /* Bordered form */
 form {
   border: 3px solid #f1f1f1;
 }
-
+div.container{
+  width: auto;
+}
 /* Full-width inputs */
 input[type=text], input[type=password] {
-  width: 100%;
+  width: auto;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -21,7 +42,7 @@ button {
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 100%;
+  width: auto;
 }
 
 /* Add a hover effect for buttons */

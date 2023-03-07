@@ -1,19 +1,21 @@
 <html>
 
 <head>
-    <title>Main Page testing!</title>
-
+    <meta charset="UTF-8">
     {% load static %}
     <link rel="stylesheet" href="{% static 'main/main.css' %}">
+    <title>Main Page testing!</title>
 
 </head>
 
 <body>
 
+    <div id="centerDiv">
+    <h1 id='pagetitle'>Home Page</h1>
     <a href="{% url 'flavor' %}"><button type="button">Create Flavors</button></a>
 
     <a href="{% url 'login page' %}"><button type="button">Login</button></a>
-
+    </div>
 </body>
 
 </html>
