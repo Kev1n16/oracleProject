@@ -24,6 +24,9 @@ form {
 div.container{
   width: auto;
 }
+div.container2{
+  width: auto;
+}
 /* Full-width inputs */
 input[type=text], input[type=password] {
   width: auto;
@@ -72,6 +75,12 @@ img.avatar {
 
 /* Add padding to containers */
 .container {
+  padding: 16px;
+  width: 1000px;
+}
+
+/* Add padding to containers */
+.container2 {
   padding: 16px;
   width: 1000px;
 }

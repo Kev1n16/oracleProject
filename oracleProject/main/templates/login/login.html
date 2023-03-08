@@ -15,15 +15,15 @@
         {% csrf_token %}
         <div class="container">
             <label for="user"><b>Username</b></label><br>
-            <input type="text" placeholder="Enter User Name" name="username" required>
+            <input type="text" placeholder="Enter User Name" name="username" id="use" required>
             <br>
             <label for="psw"><b>Password</b></label><br>
-            <input type="password" placeholder="Enter Password" name="password" required>
+            <input type="password" placeholder="Enter Password" name="password" id="pas" required>
             <br>
             <label>
                 <input type="checkbox" checked="checked" name="remember"> Remember me
             </label>
-            <button type="submit">Login</button>
+            <button id="sub" type="submit">Login</button>
             <a href="{% url 'Create account page' %}"><button type="button" class="createaccbtn">Create Account</button></a>
         </div>
     </form>
