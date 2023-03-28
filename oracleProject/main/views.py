@@ -7,6 +7,8 @@ from django.contrib import messages
 
 from main.forms import FlavorInputForm
 from main.models import Flavor
+
+from main.LassoCVTest import testLassoCV
 # Create your views here.
 
 def main(request):
@@ -48,6 +50,10 @@ def flavor(request):
         if form.is_valid():
             form.save()
             #TODO redirect to flavor display page
+        dictTest = {}
+        dictTest = testLassoCV()
+        print(dictTest)
+        return render(request, "flavor/displayFlavor.html", dictTest)
     context = {
         'form': form
     }
