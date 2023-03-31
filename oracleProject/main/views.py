@@ -47,6 +47,7 @@ def flavor(request):
         form = FlavorInputForm(request.POST)
         if form.is_valid():
             form.save()
+            return redirect('main page')
             #TODO redirect to flavor display page
     context = {
         'form': form

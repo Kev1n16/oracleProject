@@ -7,13 +7,42 @@
 </head>
 
 <body>
-    <div id="centerDiv">
-        <h1 id='pagetitle'>Home Page</h1>
-        <div class="container">
-            <a href="{% url 'flavor' %}" id="createButton"><button type="button">Create Flavors</button></a>
-        </div>
+    {% csrf_token %}
+    <div id="cornerDiv">
         <div class="container2">
-            <a href="{% url 'login page' %}"id="loginButton"><button type="button">Login</button></a>
+            <a href="{% url 'login page' %}"id="loginButton"><button type="button">Logout</button></a>
+        </div>
+    </div>
+    <div id="centerDiv" style="background_color: blue;">
+        <h1 id='pagetitle'>Prediction Tool</h1>
+        <h3>Choose the application that best suites yours.</h3>
+        <ul>
+            <li><a href="#">Applications</a>
+                <ul class="dropdown">
+                    <li><a href="#">Scientific</a></li>
+                </ul>
+            </li>
+        </ul>
+        <h2>Choose a flavor or create your own.</h2>
+        <ul>
+            <li><a href="#">Flavors</a>
+                <ul class="dropdown">
+                    <li><a href="#">Tiny</a></li>
+                    <li><a href="#">Small</a></li>
+                    <li><a href="#">Medium</a></li>
+                    <li><a href="#">Large</a></li>
+                    <li><a href="#">XLarge</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="container">
+            <a href="{% url 'flavor' %}" id="createButton"><button type="button">Create Flavor</button></a>
+        </div>
+        <div class="container">
+            <a id="predict"><button type="button">Begin Prediction</button></a>
+        </div>
+        <div class="container3" style="background-color:#dee0df">
+            <a href="{% url 'login page' %}"><button type="button" class="logoutbutton">logout</button></a>
         </div>
     </div>
 </body>
