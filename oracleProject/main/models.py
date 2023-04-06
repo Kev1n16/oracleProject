@@ -7,9 +7,10 @@ from django.shortcuts import redirect
 # Create your models here.
 class Users(models.Model):
     username = models.CharField(max_length=50)
-
+    password = models.CharField(max_length=50)
+    remember = models.CharField(max_length=3)
     def _str_(self):
-        return (self.id + ": " + self.name)
+        return (self.username)
 
 
 class ToDoList(models.Model):

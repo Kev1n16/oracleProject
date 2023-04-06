@@ -13,8 +13,8 @@
     {% endfor %}
     <form method="POST" action="">
         {% csrf_token %}
+        {{ form }}
         <div class="container">
-            {{ form.as_p }}
             <label for="user"><b>Username</b></label><br>
             <input type="text" placeholder="Enter User Name" name="username" id="use" required>
             <br>

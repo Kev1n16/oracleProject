@@ -7,6 +7,8 @@ from django.contrib.auth import authenticate, logout
 from django.contrib import messages
 
 from main.forms import FlavorInputForm
+from .forms import FlavorInputForm
+from .forms import UserInformation
 from main.models import Flavor
 # Create your views here.
 
@@ -15,16 +17,23 @@ def main(request):
     return render(request, "main/home.html",)
 
 def login(request):
+
+    form = UserInformation()
+
     if request.method == 'POST':
+       form = UserInformation(request.POST)
+
+       if (form.is_valid):
+           form.save()
+
        username = request.POST.get('username')
        password = request.POST.get('password')
-
        user = authenticate(request, username=username, password=password)
        if user is not None:
            auth_login(request, user)
            return redirect('main page')
 
-    context = {}
+    context = {'form':form}
     return render(request, "login/login.html",)
 
 def create(request):
