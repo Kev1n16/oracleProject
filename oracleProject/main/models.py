@@ -5,12 +5,12 @@ from django.shortcuts import redirect
 
 
 # Create your models here.
-class Users(models.Model):
+class User(models.Model):
     username = models.CharField(max_length=50)
     password = models.CharField(max_length=50)
     remember = models.CharField(max_length=3)
     def _str_(self):
-        return (self.username)
+        return (self.name)
 
 
 class ToDoList(models.Model):

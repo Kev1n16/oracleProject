@@ -1,10 +1,10 @@
 from django.forms import ModelForm
 from main.models import Flavor
 
-from .models import Users
+from .models import User
 class UserInformation(ModelForm):
     class Meta:
-        model = Users
+        model = User
         fields = '__all__'
 
 
