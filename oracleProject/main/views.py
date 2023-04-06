@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
@@ -9,6 +10,7 @@ from main.forms import FlavorInputForm
 from main.models import Flavor
 # Create your views here.
 
+@login_required(login_url='login')
 def main(request):
     return render(request, "main/home.html",)
 
@@ -39,7 +41,8 @@ def create(request):
 
     context = {'form': form}
     return render(request, "create/register.html", context)
-    
+
+@login_required(login_url='login')
 def flavor(request):
     form = FlavorInputForm()
 

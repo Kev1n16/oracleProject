@@ -10,10 +10,10 @@
     {% csrf_token %}
     <div id="cornerDiv">
         <div class="container2">
-            <a href="{% url 'login page' %}"id="loginButton"><button type="button">Logout</button></a>
+            <a href="{% url 'login page' %}"id="loginButton"><button type="button" class="logoutbutton">Logout</button></a>
         </div>
     </div>
-    <div id="centerDiv" style="background_color: blue;">
+    <div id="centerDiv">
         <h1 id='pagetitle'>Prediction Tool</h1>
         <h3>Choose the application that best suites yours.</h3>
         <ul>
@@ -40,9 +40,6 @@
         </div>
         <div class="container">
             <a id="predict"><button type="button">Begin Prediction</button></a>
-        </div>
-        <div class="container3" style="background-color:#dee0df">
-            <a href="{% url 'login page' %}"><button type="button" class="logoutbutton">logout</button></a>
         </div>
     </div>
 </body>

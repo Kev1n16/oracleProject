@@ -5,12 +5,12 @@ body  {
 }
 #centerDiv {
   width: 400px;
-  height: 100%;
+  height: 60%;
   margin-top: 100px;
   margin-right: auto;
   margin-left: auto;
   padding: 50px;
-  background: red;
+  background: #dee0df;
   box-shadow: 0px 0px 15px;
 }
 #pagetitle {
@@ -99,6 +99,7 @@ span.psw {
   float: right;
   padding-top: 16px;
 }
+}
 
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
@@ -116,14 +117,14 @@ span.psw {
   right:10px;
   top:5px;
   box-shadow: 0px 0px 15px;
-  border: 3px solid green;
-  width: 20px;
-  height: 20px;
+  width: 100px;
+  height: 75px;
+  background: #dee0df;
 }
 
 .logoutbutton {
   width: auto;
-  padding: 10px 18px;
+  padding: 10px 14px;
   background-color: #04AA6D;
 }
 
@@ -141,7 +142,7 @@ span.psw {
 
 ul {
   list-style: none;
-  background: gray;
+  background: #04AA6D;
 }
 
 ul li {
@@ -151,9 +152,10 @@ ul li {
 
 ul li a {
   display: block;
-  padding: 20px 25px;
-  color: green;
+  padding: 10px 15px;
+  color: white;;
   text-decoration: none;
+  text-align: center;
   text-align: center;
   font-size: 20px;
 }
@@ -171,7 +173,7 @@ ul li ul.dropdown {
 }
 
 ul li a:hover {
-  background: purple;
+  background: silver;
 }
 
 ul li:hover ul.dropdown{
