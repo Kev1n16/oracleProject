@@ -16,25 +16,25 @@
     <div id="centerDiv">
         <h1 id='pagetitle'>Prediction Tool</h1>
         <h3>Choose the application that best suites yours.</h3>
-        <ul>
-            <li><a href="#">Applications</a>
-                <ul class="dropdown">
-                    <li><a href="#">Scientific</a></li>
-                </ul>
-            </li>
-        </ul>
+        <nav>
+            <label for="touch2"><span2>Select Application</span2></label>
+            <input type="checkbox" id="touch2">
+            <ul class="slide2">
+                <li><a href="#">Scientific</a></li>
+            </ul>
+        </nav>
         <h2>Choose a flavor or create your own.</h2>
-        <ul>
-            <li><a href="#">Flavors</a>
-                <ul class="dropdown">
-                    <li><a href="#">Tiny</a></li>
-                    <li><a href="#">Small</a></li>
-                    <li><a href="#">Medium</a></li>
-                    <li><a href="#">Large</a></li>
-                    <li><a href="#">XLarge</a></li>
-                </ul>
-            </li>
-        </ul>
+        <nav>
+            <label for="touch"><span>Favors</span></label>
+            <input type="checkbox" id="touch">
+            <ul class="slide">
+                <li><a href="#">Tiny</a></li>
+                <li><a href="#">Small</a></li>
+                <li><a href="#">Medium</a></li>
+                <li><a href="#">Large</a></li>
+                <li><a href="#">XLarge</a></li>
+            </ul>
+        </nav>
         <div class="container">
             <a href="{% url 'flavor' %}" id="createButton"><button type="button">Create Flavor</button></a>
         </div>
