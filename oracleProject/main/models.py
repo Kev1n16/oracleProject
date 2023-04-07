@@ -51,6 +51,6 @@ class Flavor(models.Model):
     #acctUsername
     acctUsername = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
 
-    DisplayFields = ['name', 'id', 'amt_vCPU', 'amt_Memory', 'amt_Volume', 'amt_Ephemeral_Volume', 'acctUsername']
+    #DisplayFields = ['name', 'id', 'amt_vCPU', 'amt_Memory', 'amt_Volume', 'amt_Ephemeral_Volume', 'acctUsername']
     def _str_(self):
         return (self.id + ": " + self.name)

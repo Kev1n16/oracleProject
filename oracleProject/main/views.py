@@ -69,4 +69,4 @@ def flavor(request):
     context = {
         'form': form
     }
-    return render(request, "flavor/createflavor.html", context)
+    return render(request, "flavor/createflavor.html")
