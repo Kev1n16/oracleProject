@@ -2,14 +2,16 @@ from django.contrib.auth.decorators import login_required
 from django.db import models
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
-
+from django.contrib.auth.models import User
 
 # Create your models here.
-class Users(models.Model):
+class User(models.Model):
     username = models.CharField(max_length=50)
-
+    password = models.CharField(max_length=50)
+    remember = models.CharField(max_length=3)
+    DisplayFields = ['username', 'password', 'remember']
     def _str_(self):
-        return (self.id + ": " + self.name)
+        return (self.name)
 
 
 class ToDoList(models.Model):
@@ -46,7 +48,9 @@ class Flavor(models.Model):
     amt_Volume = models.FloatField()
     #ephemeral vol
     amt_Ephemeral_Volume = models.FloatField()
-    #id
+    #acctUsername
+    acctUsername = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
 
+    DisplayFields = ['name', 'id', 'amt_vCPU', 'amt_Memory', 'amt_Volume', 'amt_Ephemeral_Volume', 'acctUsername']
     def _str_(self):
         return (self.id + ": " + self.name)
