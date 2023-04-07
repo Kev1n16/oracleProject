@@ -17,6 +17,16 @@ body  {
   text-align: center;
 }
 
+#welcomeDiv {
+  width: 100px;
+  height: 30px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 10px;
+  background: #dee0df;
+  box-shadow: 0px 0px 15px;
+}
+
 #suggestion {
   font-family: "Times New Roman";
   font-size: 10px;
@@ -147,7 +157,6 @@ li a:hover {
 nav {
   width : 300px;
   background: #dee0df;
-  margin : 40px auto;
 }
 
 span {
@@ -158,7 +167,7 @@ span {
   font-variant : small-caps;
   cursor : pointer;
   display: block;
-  width: 70%;
+  width: 100%;
 }
 
 span::after {
@@ -209,7 +218,7 @@ span2 {
   font-variant : small-caps;
   cursor : pointer;
   display: block;
-  width: 70%;
+  width: 100%;
 }
 
 span2::after {
@@ -218,10 +227,10 @@ span2::after {
   content: "+";
 }
 
-#touch {position: absolute; opacity: 0; height: 0px;}
+#touch {position: fixed; opacity: 0; height: 0px;}
 
 #touch:checked + .slide {height: 300px;}
 
-#touch2 {position: absolute; opacity: 0; height: 0px;}
+#touch2 {position: fixed; opacity: 0; height: 0px;}
 
 #touch2:checked + .slide2 {height: 300px;}

@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.db import models
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
-
+from django.contrib.auth.models import User
 
 # Create your models here.
 class User(models.Model):
@@ -47,7 +47,7 @@ class Flavor(models.Model):
     amt_Volume = models.FloatField()
     #ephemeral vol
     amt_Ephemeral_Volume = models.FloatField()
-    #id
-
+    #acctUsername
+    acctUsername = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
     def _str_(self):
         return (self.id + ": " + self.name)
