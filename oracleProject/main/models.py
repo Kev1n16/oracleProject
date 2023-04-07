@@ -9,8 +9,9 @@ class User(models.Model):
     username = models.CharField(max_length=50)
     password = models.CharField(max_length=50)
     remember = models.CharField(max_length=3)
+    DisplayFields = ['username', 'password', 'remember']
     def _str_(self):
-        return (self.username)
+        return (self.name)
 
 
 class ToDoList(models.Model):
@@ -49,5 +50,7 @@ class Flavor(models.Model):
     amt_Ephemeral_Volume = models.FloatField()
     #acctUsername
     acctUsername = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
+
+    DisplayFields = ['name', 'id', 'amt_vCPU', 'amt_Memory', 'amt_Volume', 'amt_Ephemeral_Volume', 'acctUsername']
     def _str_(self):
         return (self.id + ": " + self.name)

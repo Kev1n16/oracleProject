@@ -3,5 +3,11 @@ from .models import ToDoList, Flavor, User
 
 # Register your models here.
 admin.site.register(ToDoList)
-admin.site.register(Flavor)
-admin.site.register(User)
+
+@admin.register(User)
+class User(admin.ModelAdmin):
+    list_display=User.DisplayFields
+
+@admin.register(Flavor)
+class User(admin.ModelAdmin):
+    list_display=Flavor.DisplayFields
