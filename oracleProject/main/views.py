@@ -62,7 +62,7 @@ def flavor(request):
         form = FlavorInputForm(request.POST)
         if form.is_valid():
             instance = form.save(commit=False)
-            instance.acctUsername = request.user
+            instance.username = request.user
             instance.save()
             return redirect('main page')
             #TODO redirect to flavor display page

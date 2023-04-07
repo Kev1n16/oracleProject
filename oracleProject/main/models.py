@@ -10,7 +10,7 @@ class User(models.Model):
     password = models.CharField(max_length=50)
     remember = models.CharField(max_length=3)
     def _str_(self):
-        return (self.name)
+        return (self.username)
 
 
 class ToDoList(models.Model):
