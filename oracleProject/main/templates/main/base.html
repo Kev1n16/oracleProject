@@ -27,8 +27,6 @@
 
         <h2>Choose a flavor or create your own.</h2>
         {% for results in acctInfo %}
-        <h7>{{ user.username }} --- {{ results.acctUsername }}</h7>
-        {% endfor %}
         <nav>
             <label for="touch"><span>Favors</span></label>
             <input type="checkbox" id="touch">
@@ -39,11 +37,10 @@
                 <li><a href="#">Large</a></li>
                 <li><a href="#">XLarge</a></li>
 
-
                 {% for results in acctInfo %}
-                <h7>{{ user.username }} --- {{ results.acctUsername }}</h7>
+                {% if user.username == results.acctUsername.username %}
                 <li><a value="{{ results.id }}">{{ results.name}}</a></li>
-
+                {% endif %}
                 {% endfor %}
 
             </ul>
