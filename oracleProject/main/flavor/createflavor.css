@@ -1,0 +1,25 @@
+body  {
+    height: auto;
+    background-attachment:fixed;
+    background-image: linear-gradient(to bottom right, #fed39e, #f39011, #8a341d);
+}
+#centerDiv {
+    width: 400px;
+    height: 60%;
+    margin-top: 100px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 50px;
+    background: #dee0df;
+    box-shadow: 0px 0px 15px;
+}
+#pagetitle {
+    text-align: center
+}
+
+#flavorinput{
+    margin: auto;
+    width: 400px;
+    background-color: whitesmoke;
+    padding: 10px;
+}
