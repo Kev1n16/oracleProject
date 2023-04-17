@@ -12,6 +12,9 @@ from .forms import UserInformation
 from .models import User
 from main.models import Flavor
 from .models import Flavor
+
+from main.LassoCVTest import testLassoCV
+
 # Create your views here.
 
 @login_required(login_url='login')
@@ -66,6 +69,10 @@ def flavor(request):
             instance.save()
             return redirect('main page')
             #TODO redirect to flavor display page
+        dictTest = {}
+        dictTest = testLassoCV()
+        print(dictTest)
+        return render(request, "flavor/displayFlavor.html", dictTest)
     context = {
         'form': form
     }
