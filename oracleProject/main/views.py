@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.shortcuts import render, redirect, reverse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import authenticate, logout
@@ -12,32 +12,41 @@ from .forms import UserInformation
 from .models import User
 from main.models import Flavor
 from .models import Flavor
+
+
 # Create your views here.
 
-@login_required(login_url='login')
 def main(request):
-    results = Flavor.objects.all()
-    return render(request, "main/home.html", {'acctInfo': results})
+    if 'login_status' in request.COOKIES and 'username' in request.COOKIES:
+        context = {
+            'userID': request.COOKIES['username'],
+            'login_status': request.COOKIES.get('login_status'),
+            'acctInfo': Flavor.objects.all(),
+        }
+        return render(request, 'main/base.html', context)
+    else:
+        return render(request, 'login/login.html')
+
 
 def login(request):
-
-    form = UserInformation()
+    if request.method == 'GET':
+        return render(request, 'login/login.html')
 
     if request.method == 'POST':
-       form = UserInformation(request.POST)
+        username = request.POST.get('username')
+        context = {
+            'userID': username,
+            'login_status': True,
+            'acctInfo': Flavor.objects.all(),
+        }
+        response = render(request, 'main/home.html', context)
 
-       if form.is_valid():
-           form.save()
+        # cookie settings
+        response.set_cookie('username', username)
+        response.set_cookie('login_status', True)
 
-       username = request.POST.get('username')
-       password = request.POST.get('password')
-       user = authenticate(request, username=username, password=password)
-       if user is not None:
-           auth_login(request, user)
-           return redirect('main page')
+        return response
 
-    context = {'form': form}
-    return render(request, "login/login.html")
 
 def create(request):
     form = UserCreationForm()
@@ -54,6 +63,7 @@ def create(request):
     context = {'form': form}
     return render(request, "create/register.html", context)
 
+
 @login_required(login_url='login')
 def flavor(request):
     form = FlavorInputForm()
@@ -65,8 +75,18 @@ def flavor(request):
             instance.username = request.user
             instance.save()
             return redirect('main page')
-            #TODO redirect to flavor display page
+            # TODO redirect to flavor display page
     context = {
         'form': form
     }
     return render(request, "flavor/createflavor.html", context)
+
+
+def logout(request):
+    response = HttpResponseRedirect(reverse('login page'))
+
+    #deleting cookies
+    response.delete_cookie('username')
+    response.delete_cookie('login_status')
+
+    return response
