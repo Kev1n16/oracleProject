@@ -8,9 +8,10 @@
 
 <body>
     {% csrf_token %}
+    {% if userID %}
     <div id="cornerDiv">
         <div class="container2">
-            <a href="{% url 'login page' %}"id="loginButton"><button type="button" class="logoutbutton">Logout</button></a>
+            <a href="{% url 'logout' %}"id="loginButton"><button type="button" class="logoutbutton">Logout</button></a>
         </div>
     </div>
     <div id="centerDiv">
@@ -51,5 +52,9 @@
             <a id="predict"><button type="button">Begin Prediction</button></a>
         </div>
     </div>
+    {% else %}
+    <h10>Please login -> </h10>
+    <a href="{% url 'login page' %}">login</a>
+    {% endif %}
 </body>
 </html>
