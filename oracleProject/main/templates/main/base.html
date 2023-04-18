@@ -38,11 +38,10 @@
                 <li><a href="#">XLarge</a></li>
 
                 {% for results in acctInfo %}
-                {% if user.username == results.acctUsername.username %}
+                {% if user.username == userID %}
                 <li><a value="{{ results.id }}">{{ results.name}}</a></li>
                 {% endif %}
                 {% endfor %}
-
             </ul>
         </nav>
         <div class="container">

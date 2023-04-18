@@ -15,9 +15,11 @@
     <div id="flavorinput">
         <form method="post" action="">
             {% csrf_token %}
-            {{ form }}
-            <h2 name="{{ userID }}">Create a flavor that will save to {{ userID }}</h2>
             <table>
+                <label> Enter Your Username <br>
+                    <input type="text" name="userID" size="30" /> </label>
+                <br>
+                <p></p>
                 <label> Enter Name <br>
                     <input type="text" name="name" size="30" /> </label>
                 <br>
