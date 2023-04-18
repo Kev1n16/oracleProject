@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
+from http import cookies
 
 # Create your models here.
 class User(models.Model):
@@ -49,7 +50,7 @@ class Flavor(models.Model):
     #ephemeral vol
     amt_Ephemeral_Volume = models.FloatField(null=True)
     #acctUsername
-    acctUsername = models.ForeignKey(User, default=None, on_delete=models.CASCADE, null=True)
+    acctUsername = models.CharField(max_length=50, null=True)
 
     DisplayFields = ['name', 'id', 'amt_vCPU', 'amt_Memory', 'amt_Volume', 'amt_Ephemeral_Volume', 'acctUsername']
     def _str_(self):
