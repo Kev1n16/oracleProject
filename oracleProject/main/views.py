@@ -29,7 +29,12 @@ def main(request):
 
 
 def login(request):
+    form = UserInformation()
+
     if request.method == 'GET':
+        form = UserInformation(request.POST)
+        if form.is_valid():
+            form.save()
         return render(request, 'login/login.html')
 
     if request.method == 'POST':
@@ -67,15 +72,37 @@ def create(request):
 @login_required(login_url='login')
 def flavor(request):
     form = FlavorInputForm()
+    if 'login_status' in request.COOKIES and 'username' in request.COOKIES:
+        print("in")
+        context = {
+            'userID': request.COOKIES['username'],
+            'login_status': request.COOKIES.get('login_status'),
+            'acctInfo': Flavor.objects.all(),
+        }
 
-    if request.method == 'POST':
-        form = FlavorInputForm(request.POST)
-        if form.is_valid():
-            instance = form.save(commit=False)
-            instance.username = request.user
-            instance.save()
-            return redirect('main page')
-            # TODO redirect to flavor display page
+        if request.method == 'POST':
+            print("inside")
+            form = FlavorInputForm(request.POST)
+            form = FlavorInputForm(initial={'acctUsername': request.COOKIES['username']})
+            form.fields['acctUsername'] = request.COOKIES['username']
+            form.fields['name'] = request.POST.get('name')
+            form.fields['id'] = request.POST.get('id')
+            form.fields['amt_vCPU'] = request.POST.get('amt_vCPU')
+            form.fields['amt_Memory'] = request.POST.get('amt_Memory')
+            form.fields['amt_Volume'] = request.POST.get('amt_Volume')
+            form.fields['amt_Ephemeral_Volume'] = request.POST.get('amt_Ephemeral_Volume')
+            print(form.fields['amt_Ephemeral_Volume'])
+            print(form.fields['name'])
+            print(form.fields['acctUsername'])
+            print(form.fields['amt_vCPU'])
+            form.save()
+            if form.is_valid():
+                print("valid")
+                instance = form.save(commit=False)
+                instance.username = request.user
+                form.save()
+                return redirect('main page')
+                # TODO redirect to flavor display page
     context = {
         'form': form
     }
