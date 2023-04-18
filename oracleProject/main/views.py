@@ -80,7 +80,7 @@ def flavor(request):
         }
 
         if request.method == 'POST':
-            acctUsername = request.POST.get("userID")
+            acctUsername = request.COOKIES['username']
             print(acctUsername)
             name = request.POST.get("name")
             id = request.POST.get("id")

@@ -16,9 +16,8 @@
         <form method="post" action="">
             {% csrf_token %}
             <table>
-                <label> Enter Your Username <br>
-                    <input type="text" name="userID" size="30" /> </label>
-                <br>
+                <label type="text" name="userID" size="30" >
+                    {{ userID }}<br></label><br>
                 <p></p>
                 <label> Enter Name <br>
                     <input type="text" name="name" size="30" /> </label>
