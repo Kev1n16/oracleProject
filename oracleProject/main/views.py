@@ -29,7 +29,12 @@ def main(request):
 
 
 def login(request):
+    form = UserInformation()
+
     if request.method == 'GET':
+        form = UserInformation(request.POST)
+        if form.is_valid():
+            form.save()
         return render(request, 'login/login.html')
 
     if request.method == 'POST':
@@ -66,18 +71,34 @@ def create(request):
 
 @login_required(login_url='login')
 def flavor(request):
-    form = FlavorInputForm()
+    if 'login_status' in request.COOKIES and 'username' in request.COOKIES:
+        print("in")
+        context = {
+            'userID': request.COOKIES['username'],
+            'login_status': request.COOKIES.get('login_status'),
+            'acctInfo': Flavor.objects.all(),
+        }
 
-    if request.method == 'POST':
-        form = FlavorInputForm(request.POST)
-        if form.is_valid():
-            instance = form.save(commit=False)
-            instance.username = request.user
-            instance.save()
-            return redirect('main page')
-            # TODO redirect to flavor display page
+        if request.method == 'POST':
+            acctUsername = request.COOKIES['username']
+            print(acctUsername)
+            name = request.POST.get("name")
+            id = request.POST.get("id")
+            amt_vCPU = request.POST.get("amt_vCPU")
+            amt_Memory = request.POST.get("amt_Memory")
+            amt_Volume = request.POST.get("amt_Volume")
+            amt_Ephemeral_Volume = request.POST.get("amt_Ephemeral_Volume")
+            data = Flavor(name=name, id=id, amt_vCPU=amt_vCPU,
+            amt_Memory=amt_Memory, amt_Volume=amt_Volume, amt_Ephemeral_Volume=amt_Ephemeral_Volume,
+            acctUsername=acctUsername)
+            data.save()
+            print("saved")
+            return render(request, 'main/base.html', context)
+
     context = {
-        'form': form
+        'userID': request.COOKIES['username'],
+        'login_status': request.COOKIES.get('login_status'),
+        'acctInfo': Flavor.objects.all(),
     }
     return render(request, "flavor/createflavor.html", context)
 

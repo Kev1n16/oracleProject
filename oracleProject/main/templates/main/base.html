@@ -15,7 +15,7 @@
         </div>
     </div>
     <div id="centerDiv">
-        <h5> Welcome {{ user.username }}! </h5>
+        <h5> Welcome {{ userID }}! </h5>
         <h1 id='pagetitle'>Prediction Tool</h1>
         <h3>Choose the application that best suites yours.</h3>
         <nav>
@@ -27,6 +27,7 @@
         </nav>
 
         <h2>Choose a flavor or create your own.</h2>
+        {{ acctInfo.Flavor.acctUsername }}
         <nav>
             <label for="touch"><span>Favors</span></label>
             <input type="checkbox" id="touch">
@@ -38,11 +39,10 @@
                 <li><a href="#">XLarge</a></li>
 
                 {% for results in acctInfo %}
-                {% if user.username == results.acctUsername.username %}
+                {% if results.acctUsername == userID %}
                 <li><a value="{{ results.id }}">{{ results.name}}</a></li>
                 {% endif %}
                 {% endfor %}
-
             </ul>
         </nav>
         <div class="container">

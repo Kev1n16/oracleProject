@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
+from http import cookies
 
 # Create your models here.
 class User(models.Model):
@@ -37,19 +38,19 @@ class Flavor(models.Model):
         return redirect(request, "main/home.html",)
 
     #flavor name
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, null=True)
     #flavor id(?)
     id = models.IntegerField(primary_key=True)
     #vcpus
-    amt_vCPU = models.IntegerField()
+    amt_vCPU = models.IntegerField(null=True)
     #mem
-    amt_Memory = models.FloatField()
+    amt_Memory = models.FloatField(null=True)
     #vol
-    amt_Volume = models.FloatField()
+    amt_Volume = models.FloatField(null=True)
     #ephemeral vol
-    amt_Ephemeral_Volume = models.FloatField()
+    amt_Ephemeral_Volume = models.FloatField(null=True)
     #acctUsername
-    acctUsername = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
+    acctUsername = models.CharField(max_length=50, null=True)
 
     DisplayFields = ['name', 'id', 'amt_vCPU', 'amt_Memory', 'amt_Volume', 'amt_Ephemeral_Volume', 'acctUsername']
     def _str_(self):

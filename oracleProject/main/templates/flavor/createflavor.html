@@ -9,18 +9,43 @@
 </head>
 
 <body>
+
     <div id="centerDiv">
     <h1 id='pagetitle'>Flavor Creation</h1>
     <div id="flavorinput">
         <form method="post" action="">
             {% csrf_token %}
-            <h2>Create a flavor that will save to {{ user.username }}</h2>
             <table>
-                {{ form.as_p }}
+                <label type="text" name="userID" size="30" >
+                    {{ userID }}<br></label><br>
+                <p></p>
+                <label> Enter Name <br>
+                    <input type="text" name="name" size="30" /> </label>
+                <br>
+                <p></p>
+                <label> Enter ID <br>
+                    <input type="number" name="id" size="30" /> </label>
+                <br />
+                <p></p>
+                <label> Enter vCPUs <br>
+                    <input type="number" name="amt_vCPU" size="30" /> </label>
+                <br>
+                <p></p>
+                <label> Enter memory in GB <br>
+                    <input type="number" step="any" name="amt_Memory" size="30" /> </label>
+                <br />
+                <p></p>
+                <label> Enter volume in GB <br>
+                    <input type="number" step="any" name="amt_Volume" size="30" /> </label>
+                <br>
+                <p></p>
+                <label> Enter ephemeral volume in GB <br>
+                    <input type="number" step="any" name="amt_Ephemeral_Volume" size="30" /> </label>
+                <br />
+                <p href="{% url 'main page' %}">
+                    <a href="{% url 'main page' %}"><input href="{% url 'main page' %}" type="submit" value="Create"></a>
+                </p>
             </table>
-            <p href="{% url 'main page' %}">
-                <a href="{% url 'main page' %}"><input href="{% url 'main page' %}" type="submit" value="Create"></a>
-            </p>
 
         </form>
     </div>

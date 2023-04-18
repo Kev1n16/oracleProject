@@ -28,5 +28,5 @@ class FlavorInputForm(ModelForm):
             'amt_Memory': "Amount of Memory (GB)",
             'amt_Volume': "Amount of Storage Volume (GB)",
             'amt_Ephemeral_Volume': "Amount of Ephemeral Storage Volume (GB)",
-            'acctUsername': "Unique ID per account"
+            'Unique ID': "Username"
         }
