@@ -64,22 +64,37 @@ def create(request):
     return render(request, "create/register.html", context)
 
 
-@login_required(login_url='login')
 def flavor(request):
     form = FlavorInputForm()
 
     if request.method == 'POST':
+        print("hello")
         form = FlavorInputForm(request.POST)
-        if form.is_valid():
-            instance = form.save(commit=False)
-            instance.username = request.user
-            instance.save()
-            return redirect('main page')
-            # TODO redirect to flavor display page
-    context = {
-        'form': form
-    }
-    return render(request, "flavor/createflavor.html", context)
+        form.name = request.POST.get('name')
+        form.id = request.POST.get('id')
+        form.amt_vCPU = request.POST.get('amt_vCPU')
+        form.amt_Memory = request.POST.get('amt_Memory')
+        form.amt_Volume = request.POST.get('amt_Volume')
+        form.amt_Ephemeral_Volume = request.POST.get('amt_Ephemeral_Volume')
+        form.acctUsername = request.COOKIES['username']
+        username = request.COOKIES['username']
+
+        context = {
+            'userID': username,
+            'login_status': True,
+            'acctInfo': Flavor.objects.all(),
+            'name': form.name,
+            'id': form.id,
+            'amt_vCPU': form.amt_vCPU,
+            'amt_Memory': form.amt_Memory,
+            'amt_Volume': form.amt_Volume,
+            'amt_Ephemeral_Volume': form.amt_Ephemeral_Volume,
+            'acctUsername': form.acctUsername,
+        }
+        response = render(request, 'flavor/createflavor.html', context)
+        return response
+    print("goodbye")
+    return render(request, "main/home.html")
 
 
 def logout(request):
