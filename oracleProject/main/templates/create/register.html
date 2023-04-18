@@ -1,8 +1,16 @@
-<h3> Create Account </h3>
-<form method="POST" action="">
-    {% csrf_token %}
-    {{form.as_p}}
 
-    <input type="submit" name="Create User">
-    </div>
-</form>
+<html>
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'create/createaccount.css' %}">
+</head>
+<body>
+    <h3> Create Account </h3>
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" name="Create User">
+    </form>
+</body>
+</html>
