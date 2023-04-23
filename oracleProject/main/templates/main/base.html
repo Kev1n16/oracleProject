@@ -32,14 +32,11 @@
             <label for="touch"><span>Favors</span></label>
             <input type="checkbox" id="touch">
             <ul class="slide">
-                <li><a href="#">Tiny</a></li>
-                <li><a href="#">Small</a></li>
-                <li><a href="#">Medium</a></li>
-                <li><a href="#">Large</a></li>
-                <li><a href="#">XLarge</a></li>
-
                 {% for results in acctInfo %}
                 {% if results.acctUsername == userID %}
+                <li><a value="{{ results.id }}">{{ results.name}}</a></li>
+                {% endif %}
+                {% if results.acctUsername == "1" %}
                 <li><a value="{{ results.id }}">{{ results.name}}</a></li>
                 {% endif %}
                 {% endfor %}
