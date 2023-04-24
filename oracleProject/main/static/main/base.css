@@ -146,12 +146,15 @@ span.psw {
   }
 }
 
-li a {text-decoration : none; color : #2d2f31;}
+li:hover {
+  box-shadow: 0px 0px 5px;
+}
+
+li a {
+text-decoration : none;
+}
 
 li a:hover {
-  color: green;
-  box-shadow: 0px 0px 15px;
-  border-radius: 50%
 }
 
 nav {
@@ -234,3 +237,24 @@ span2::after {
 #touch2 {position: fixed; opacity: 0; height: 0px;}
 
 #touch2:checked + .slide2 {height: 300px;}
+
+
+nav > ul > li > ul > li{
+   transition: transform 0.6s, opacity 0.6s;
+   transform:translateX(150%);
+   opacity:0;
+   box-shadow: 0px 0px 15px;
+}
+nav > ul > li:hover > ul > li,
+nav > ul > li.hover > ul > li{
+   transform:translateY(0%);
+   opacity: 1;
+   background: #dee0df;
+}
+
+.info {
+position: absolute;
+top: 520px;
+right: 300px;
+pointer-events: none;
+}

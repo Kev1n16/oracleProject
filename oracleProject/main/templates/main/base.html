@@ -34,10 +34,42 @@
             <ul class="slide">
                 {% for results in acctInfo %}
                 {% if results.acctUsername == userID %}
-                <li><a value="{{ results.id }}">{{ results.name}}</a></li>
+                <li>
+                    <a value="{{ results.id }}">{{ results.name }}</a>
+                    <ul class="info">
+                        <li>
+                            <a>vCPU: {{ results.amt_vCPU }}</a>
+                        </li>
+                        <li>
+                            <a>Memory(GB): {{ results.amt_Memory }}</a>
+                        </li>
+                        <li>
+                            <a>Volume(GB): {{ results.amt_Volume }}</a>
+                        </li>
+                        <li>
+                            <a>Ephemeral Volume(GB): {{ results.amt_Ephemeral_Volume }}</a>
+                        </li>
+                    </ul>
+                </li>
                 {% endif %}
                 {% if results.acctUsername == "1" %}
-                <li><a value="{{ results.id }}">{{ results.name}}</a></li>
+                <li>
+                    <a value="{{ results.id }}">{{ results.name}}</a>
+                    <ul class="info">
+                        <li>
+                            <a>vCPU: {{ results.amt_vCPU }}</a>
+                        </li>
+                        <li>
+                            <a>Memory(GB): {{ results.amt_Memory }}</a>
+                        </li>
+                        <li>
+                            <a>Volume(GB): {{ results.amt_Volume }}</a>
+                        </li>
+                        <li>
+                            <a>Ephemeral Volume(GB): {{ results.amt_Ephemeral_Volume }}</a>
+                        </li>
+                    </ul>
+                </li>
                 {% endif %}
                 {% endfor %}
             </ul>
