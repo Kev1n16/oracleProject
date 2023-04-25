@@ -50,10 +50,12 @@ def flavor(request):
         if form.is_valid():
             form.save()
             #TODO redirect to flavor display page
+        '''TODO DELETE TEST STUFF
         dictTest = {}
         dictTest = testLassoCV()
         print(dictTest)
         return render(request, "flavor/displayFlavor.html", dictTest)
+        '''
     context = {
         'form': form
     }
