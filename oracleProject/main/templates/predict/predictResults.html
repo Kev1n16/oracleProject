@@ -10,14 +10,24 @@
 
 <body>
     <div id="centerDiv">
-    <h1 id='pagetitle'>Flavor Creation</h1>
+    <h1 id='pagetitle'>Flavor Prediction</h1>
     <div id="flavorinput">
-        <form method="post" action="">
-            {% csrf_token %}
-            <table>
-                {{ form.as_p }}
-            </table>
-
+        <table>
+            <tr>
+                    <th>CPU cores</th>
+                    <th>CPU capacity provisioned [MHZ]</th>
+                    <th>CPU usage [%]</th>
+                    <th>Memory capacity provisioned [KB]</th>
+                    <th>Memory usage [KB]</th>
+            </tr>
+            <tr>
+                    <td>{{amt_CPU}}</td>
+                    <td>{{amt_vCPU}}</td>
+                    <td>{{prcnt_CPU}}</td>
+                    <td>{{amt_Memory}}</td>
+                    <td>{{prcnt_Memory}}</td>
+            </tr>
+        </table>
             <!-- <label> Enter Name <br>
                 <input type="text" name="name" size="30" /> </label>
             <br>
@@ -43,7 +53,9 @@
             <br /> -->
 
             <p>
-                <input type="submit" value="Create">
+                <div class="container">
+            <a href="{% url 'predict' %}" id="predictButton"><button type="button">Return</button></a>
+        </div>
             </p>
 
         </form>

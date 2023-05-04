@@ -6,14 +6,12 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth import authenticate, logout
 from django.contrib import messages
 
-from main.forms import FlavorInputForm
-from .forms import FlavorInputForm
-from .forms import UserInformation
+from main.forms import *
 from .models import User
 from main.models import Flavor
 from .models import Flavor
 
-
+from main.machinelearning import MTLassoCV
 # Create your views here.
 
 def main(request):
@@ -68,8 +66,6 @@ def create(request):
     context = {'form': form}
     return render(request, "create/register.html", context)
 
-
-@login_required(login_url='login')
 def flavor(request):
     if 'login_status' in request.COOKIES and 'username' in request.COOKIES:
         print("in")
@@ -111,3 +107,22 @@ def logout(request):
     response.delete_cookie('login_status')
 
     return response
+
+def predict(request):
+    form = PredictInputForm()
+
+    if request.method == 'POST':
+        form = PredictInputForm(request.POST)
+        data = request.POST
+        data = {key: data[key] for key in ['amt_CPU', 'amt_vCPU', 'prcnt_CPU', 'amt_Memory', 'prcnt_Memory']}
+        #print(data)
+
+        if form.is_valid():
+            print('Form submitted')
+            context = MTLassoCV(data)
+            #print(dictTest)
+            return render(request, "predict/predictResults.html", context)
+    context = {
+        'form': form
+    }
+    return render(request, "predict/predictflavor.html", context)

@@ -1,8 +1,6 @@
 from django.forms import ModelForm
-from main.models import Flavor
+from main.models import *
 
-from .models import User
-from .models import User
 class UserInformation(ModelForm):
     class Meta:
         model = User
@@ -29,4 +27,18 @@ class FlavorInputForm(ModelForm):
             'amt_Volume': "Amount of Storage Volume (GB)",
             'amt_Ephemeral_Volume': "Amount of Ephemeral Storage Volume (GB)",
             'Unique ID': "Username"
+        }
+
+class PredictInputForm(ModelForm):
+    class Meta:
+        model = Predict
+        fields = ('amt_CPU', 'amt_vCPU', 'prcnt_CPU', 'amt_Memory',
+                  'prcnt_Memory')
+
+        labels = {
+            'amt_CPU' : "CPU Cores", 
+            'amt_vCPU' : "vCPU (MHz)", 
+            'prcnt_CPU' : "Average Percent CPU Usage", 
+            'amt_Memory' : "Memory (KB)",
+            'prcnt_Memory' : "Average Percent Memory Usage"
         }

@@ -55,3 +55,20 @@ class Flavor(models.Model):
     DisplayFields = ['name', 'id', 'amt_vCPU', 'amt_Memory', 'amt_Volume', 'amt_Ephemeral_Volume', 'acctUsername']
     def _str_(self):
         return (self.id + ": " + self.name)
+
+class Predict(models.Model):
+
+    amt_CPU = models.IntegerField(null=True, blank=True)
+    amt_vCPU = models.FloatField(null=True, blank=True)
+    prcnt_CPU = models.FloatField(null=True, blank=True)
+
+    amt_Memory = models.FloatField(null=True, blank=True)
+    prcnt_Memory = models.FloatField(null=True, blank=True)
+
+  
+
+    DisplayFields = ['amt_CPU', 'amt_vCPU', 'prcnt_CPU', 'amt_Memory', 'prcnt_Memory']
+    def _str_(self):
+        return (self.id + ": " + self.name)
+    
+    

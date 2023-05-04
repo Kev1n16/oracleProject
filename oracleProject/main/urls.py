@@ -8,5 +8,6 @@ urlpatterns = [
     path("login/", views.login, name="login page"),
     path("create/", views.create, name="Create account page"),
     path("flavor/", views.flavor, name="flavor"),
-    path("logout/", views.logout, name="logout")
+    path("logout/", views.logout, name="logout"),
+    path("predict/", views.predict, name='predict')
 ]
