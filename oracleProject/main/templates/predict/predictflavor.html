@@ -9,10 +9,15 @@
 </head>
 
 <body>
+
+   
+
+
+
     <div id="centerDiv">
     <h1 id='pagetitle'>Flavor Prediction</h1>
     <div id="flavorinput">
-        <form method="post" action="">
+        <form method="post" action="" >
             {% csrf_token %}
             <table>
                 {{ form.as_p }}
@@ -42,13 +47,42 @@
                 <input type="number" step="any" name="amt_Ephemeral_Volume" size="30" /> </label>
             <br /> -->
 
-            <p>
-                <input type="submit" value="Predict">
-            </p>
+            <div id="formsubmitbutton">
+                <input type="submit" name="submitter" value="Perdict" onclick="ButtonClicked()">
+                </div>
+                <div id="buttonreplacement" style="margin-left:30px; display:none;">
+                <img src="//www.willmaster.com/images/preload.gif" alt="loading...">
+                </div>
 
         </form>
+        
     </div>
     </div>
+    
+            
 </body>
+<script type="text/javascript">
+    function ButtonClicked()
+{
+   document.getElementById("formsubmitbutton").style.display = "none"; // to undisplay
+   document.getElementById("buttonreplacement").style.display = ""; // to display
+   return true;
+}
+var FirstLoading = true;
+function RestoreSubmitButton()
+{
+   if( FirstLoading )
+   {
+      FirstLoading = false;
+      return;
+   }
+   document.getElementById("formsubmitbutton").style.display = ""; // to display
+   document.getElementById("buttonreplacement").style.display = "none"; // to undisplay
+}
+// To disable restoring submit button, disable or delete next line.
+document.onfocus = RestoreSubmitButton;
+</script>
+
+
 
 </html>
