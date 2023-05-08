@@ -68,8 +68,6 @@ def create(request):
     context = {'form': form}
     return render(request, "create/register.html", context)
 
-
-@login_required(login_url='login')
 def flavor(request):
     if 'login_status' in request.COOKIES and 'username' in request.COOKIES:
         print("in")
