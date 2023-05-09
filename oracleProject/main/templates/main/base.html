@@ -19,7 +19,7 @@
         <h1 id='pagetitle'>Prediction Tool</h1>
         <h3>Choose the application that best suites yours.</h3>
         <nav>
-            <label for="touch2"><span2>Select Application</span2></label>
+            <label id="t2" for="touch2"><span2>Select Application</span2></label>
             <input type="checkbox" id="touch2">
             <ul class="slide2">
                 <li><a href="#">Scientific</a></li>
@@ -29,13 +29,13 @@
         <h2>Choose a flavor or create your own.</h2>
         {{ acctInfo.Flavor.acctUsername }}
         <nav>
-            <label for="touch"><span>Favors</span></label>
+            <label id="t1" for="touch"><span>Flavors</span></label>
             <input type="checkbox" id="touch">
             <ul class="slide">
                 {% for results in acctInfo %}
                 {% if results.acctUsername == userID %}
                 <li>
-                    <a value="{{ results.id }}">{{ results.name }}</a>
+                    <a id="seleniumtest" value="{{ results.id }}">{{ results.name }}</a>
                     <ul class="info">
                         <li>
                             <a>vCPU: {{ results.amt_vCPU }}</a>

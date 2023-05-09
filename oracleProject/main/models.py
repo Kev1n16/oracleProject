@@ -1,11 +1,11 @@
-from django.contrib.auth.decorators import login_required
 from django.db import models
-from django.contrib.auth.models import User
 from django.shortcuts import redirect
-from django.contrib.auth.models import User
-from http import cookies
 
 # Create your models here.
+
+
+#user data base to cross reference account information with the cookies
+#this is done because it was difficult to access the django account authentication db directly
 class User(models.Model):
     username = models.CharField(max_length=50)
     password = models.CharField(max_length=50)
@@ -29,17 +29,17 @@ class Item(models.Model):
     def _str_(self):
         return self.text
 
-
+#model to create a data base for all of the flavors any user creates
 class Flavor(models.Model):
     def my_view(request):
         username = None
         if request.user.is_authenticated():
             username = request.user.username
-        return redirect(request, "main/home.html",)
+        return redirect(request, "main/base.html",)
 
     #flavor name
     name = models.CharField(max_length=50, null=True)
-    #flavor id(?)
+    #flavor id
     id = models.IntegerField(primary_key=True)
     #vcpus
     amt_vCPU = models.IntegerField(null=True)
@@ -49,7 +49,7 @@ class Flavor(models.Model):
     amt_Volume = models.FloatField(null=True)
     #ephemeral vol
     amt_Ephemeral_Volume = models.FloatField(null=True)
-    #acctUsername
+    #acctUsername (this is the only variable saved not by user input, it is automatically saved by reading the user's account name)
     acctUsername = models.CharField(max_length=50, null=True)
 
     DisplayFields = ['name', 'id', 'amt_vCPU', 'amt_Memory', 'amt_Volume', 'amt_Ephemeral_Volume', 'acctUsername']

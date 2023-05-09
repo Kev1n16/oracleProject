@@ -2,7 +2,8 @@ from django.forms import ModelForm
 from main.models import Flavor
 
 from .models import User
-from .models import User
+
+#form for the secondary user account data base
 class UserInformation(ModelForm):
     class Meta:
         model = User
@@ -15,6 +16,7 @@ class UserInformation(ModelForm):
         }
 
 
+#form for all of the flavor values
 class FlavorInputForm(ModelForm):
     class Meta:
         model = Flavor

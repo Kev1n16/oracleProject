@@ -1,9 +1,10 @@
 from django.contrib import admin
 from .models import ToDoList, Flavor, User
 
-# Register your models here.
+# Registering models here
 admin.site.register(ToDoList)
 
+#setting them to display a certain way within the admin page here
 @admin.register(User)
 class User(admin.ModelAdmin):
     list_display=User.DisplayFields
