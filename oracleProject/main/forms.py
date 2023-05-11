@@ -1,6 +1,7 @@
 from django.forms import ModelForm
 from main.models import *
 
+#form for the secondary user account data base
 class UserInformation(ModelForm):
     class Meta:
         model = User
@@ -13,6 +14,7 @@ class UserInformation(ModelForm):
         }
 
 
+#form for all of the flavor values
 class FlavorInputForm(ModelForm):
     class Meta:
         model = Flavor
@@ -29,6 +31,7 @@ class FlavorInputForm(ModelForm):
             'Unique ID': "Username"
         }
 
+#Adaptor form for dataset
 class PredictInputForm(ModelForm):
     class Meta:
         model = Predict
