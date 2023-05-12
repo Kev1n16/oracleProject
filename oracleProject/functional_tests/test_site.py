@@ -66,6 +66,6 @@ class TestMainPage(StaticLiveServerTestCase):
         self.browser.find_element(By.ID, 'id_amt_Memory').send_keys("10000") #adding one more value
         time.sleep(.5)
 
-        self.browser.find_element(By.ID, 'submit').click() #submitting request waiting 20 seconds for result
+        self.browser.find_element(By.ID, 'id_submit').click() #submitting request waiting 20 seconds for result
         time.sleep(20)
 
