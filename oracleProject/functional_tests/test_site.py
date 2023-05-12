@@ -55,5 +55,17 @@ class TestMainPage(StaticLiveServerTestCase):
         )
 
         self.browser.find_element(By.ID, 't1').click() #view that the flavor just created is existing and visible
-        time.sleep(5)
+        time.sleep(2)
+
+        self.browser.find_element(By.ID, 'predictButton').click() #goes to the prediction page
+        time.sleep(1)
+
+        self.browser.find_element(By.ID, 'id_amt_CPU').send_keys("4") #inputs information into prediction tool
+        time.sleep(.5)
+
+        self.browser.find_element(By.ID, 'id_amt_Memory').send_keys("6000000") #adding one more value
+        time.sleep(.5)
+
+        self.browser.find_element(By.ID, 'sub').click() #submitting request waiting 20 seconds for result
+        time.sleep(20)
 

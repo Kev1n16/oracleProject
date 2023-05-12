@@ -3,3 +3,6 @@ oracleProject/main/migrations/__pycache__/*
 oracleProject/oracleProject/__pycache__/*
 oracleProject/staticfiles/*
 oracleProject/db.sqlite3
+.idea
+.vs
+oracleProject/.idea
