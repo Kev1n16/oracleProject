@@ -89,29 +89,18 @@ def machineLearning(userData):
     # format predict data into dictionary
     i = 0
     for key in empty_keys:
-        '''
-        predictData[0][key] = round(predictMTLassoCV[0][i], 2)
-        predictData[1][key] = round(predictRidgeCV[0][i], 2)
-        predictData[2][key] = round(predictMTElasticNetCV[0][i], 2)
-        '''
         valMTLassoCV = round(predictMTLassoCV[0][i], 2)
         valRidgeCV = round(predictRidgeCV[0][i], 2)
         valMTElasticNetCV = round(predictMTElasticNetCV[0][i], 2)
         outputData[key] = (valMTLassoCV + valRidgeCV + valMTElasticNetCV) / 3
         i += 1
-    print("output1:")
-    print(outputData)
-    print("Input:")
-    print(inputData)
     # include user input data
     outputData.update(inputData)
-    print("output2:")
-    print(outputData)
 
     # convert from dataset keys to input form keys
     for key1, key2 in zip(dataKeys, formKeys):
         outputData[key2] = outputData.pop(key1)
-    print("output3:")
+    print("Output:")
     print(outputData)
     return outputData
 
