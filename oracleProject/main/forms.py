@@ -1,7 +1,7 @@
 from django.forms import ModelForm
 from main.models import *
 
-#form for the secondary user account data base
+# form for the secondary user account data base
 class UserInformation(ModelForm):
     class Meta:
         model = User
@@ -14,7 +14,7 @@ class UserInformation(ModelForm):
         }
 
 
-#form for all of the flavor values
+# form for all of the flavor values
 class FlavorInputForm(ModelForm):
     class Meta:
         model = Flavor
@@ -31,17 +31,17 @@ class FlavorInputForm(ModelForm):
             'Unique ID': "Username"
         }
 
-#Adaptor form for dataset
+# Adaptor form for dataset
 class PredictInputForm(ModelForm):
     class Meta:
         model = Predict
         fields = ('amt_CPU', 'amt_vCPU', 'prcnt_CPU', 'amt_Memory',
-                  'prcnt_Memory')
+                  'used_Memory')
 
         labels = {
-            'amt_CPU' : "CPU Cores", 
-            'amt_vCPU' : "vCPU (MHz)", 
-            'prcnt_CPU' : "Average Percent CPU Usage", 
-            'amt_Memory' : "Memory (KB)",
-            'prcnt_Memory' : "Average Percent Memory Usage"
+            'amt_CPU': "CPU Cores",
+            'amt_vCPU': "vCPU (MHz)",
+            'prcnt_CPU': "Average Percent CPU Usage",
+            'amt_Memory': "Memory (KB)",
+            'used_Memory': "Average Percent Memory Usage"
         }
