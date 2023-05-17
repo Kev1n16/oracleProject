@@ -7,7 +7,7 @@ from sklearn.linear_model import MultiTaskLassoCV, RidgeCV, MultiTaskElasticNetC
 from sklearn.model_selection import RepeatedKFold
 import zipfile as zpf
 import joblib
-from sklearn import preprocessing
+from sklearn.preprocessing import MinMaxScaler, QuantileTransformer
 
 
 def machineLearning(userData):
@@ -30,6 +30,13 @@ def machineLearning(userData):
         df.drop(df[df['CPU usage [%]'] < 1].index, inplace=True)
         dfList.append(df)
     fullData = pd.concat(dfList, axis=0, ignore_index=True)
+
+    # data preprocessing
+    mms = MinMaxScaler()
+    # minmax scale cpu usage %
+    fullData[["CPU usage [%]"]] = mms.fit_transform(
+        fullData[["CPU usage [%]"]])
+
     df = [fullData.sample(n=500), fullData.sample(n=500),
           fullData.sample(n=500)]
     data = [df[0][dataKeys], df[1][dataKeys], df[2][dataKeys]]
@@ -54,7 +61,8 @@ def machineLearning(userData):
     print(empty_keys)
 
     # fit training input data and target output data to models
-    x = [data[0][non_empty_keys], data[1][non_empty_keys], data[2][non_empty_keys]]
+    x = [data[0][non_empty_keys], data[1]
+         [non_empty_keys], data[2][non_empty_keys]]
     y = [data[0][empty_keys], data[1][empty_keys], data[2][empty_keys]]
     modelMTLassoCV.fit(x[0].values, y[0].values)
     print("MultiTaskLassoCV Fitted")
@@ -73,45 +81,44 @@ def machineLearning(userData):
         predictData[0][key] = userData[key]
         predictData[1][key] = userData[key]
         predictData[2][key] = userData[key]
+    if 'CPU usage [%]' in empty_keys:
+        index_prcntCPU = empty_keys.index('CPU usage [%]')
+
     print("Input:")
     print(inputData)
     predictMTLassoCV = modelMTLassoCV.predict([list(inputData.values())])
+    predictMTLassoCV[0][index_prcntCPU] = mms.inverse_transform(predictMTLassoCV)[
+        0][index_prcntCPU]
     print("MTLassoCV:")
     print(predictMTLassoCV)
     predictRidgeCV = modelRidgeCV.predict([list(inputData.values())])
+    predictRidgeCV[0][index_prcntCPU] = mms.inverse_transform(predictRidgeCV)[
+        0][index_prcntCPU]
     print("RidgeCV:")
     print(predictRidgeCV)
     predictMTElasticNetCV = modelMTElasticNetCV.predict(
         [list(inputData.values())])
+    predictMTElasticNetCV[0][index_prcntCPU] = mms.inverse_transform(
+        predictMTElasticNetCV)[0][index_prcntCPU]
     print("MultiTaskElasticNetCV:")
     print(predictMTElasticNetCV)
 
     # format predict data into dictionary
     i = 0
     for key in empty_keys:
-        '''
-        predictData[0][key] = round(predictMTLassoCV[0][i], 2)
-        predictData[1][key] = round(predictRidgeCV[0][i], 2)
-        predictData[2][key] = round(predictMTElasticNetCV[0][i], 2)
-        '''
         valMTLassoCV = round(predictMTLassoCV[0][i], 2)
         valRidgeCV = round(predictRidgeCV[0][i], 2)
         valMTElasticNetCV = round(predictMTElasticNetCV[0][i], 2)
-        outputData[key] = (valMTLassoCV + valRidgeCV + valMTElasticNetCV) / 3
+        outputData[key] = round(
+            (valMTLassoCV + valRidgeCV + valMTElasticNetCV) / 3, 2)
         i += 1
-    print("output1:")
-    print(outputData)
-    print("Input:")
-    print(inputData)
     # include user input data
     outputData.update(inputData)
-    print("output2:")
-    print(outputData)
 
     # convert from dataset keys to input form keys
     for key1, key2 in zip(dataKeys, formKeys):
         outputData[key2] = outputData.pop(key1)
-    print("output3:")
+    print("Output:")
     print(outputData)
     return outputData
 
